@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.header {
+  display: flex;
+  justify-content: center;
+}
+.conteiner {
+  width: 1020px;
+  height: 90px;
+}
+.header-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2d303a;
+  border-bottom: 5px solid #000;
+}
+
+.logo {
+  color: white;
+  text-transform: uppercase;
+  margin: 32px 0 35px 40px;
+  font-size: 25px;
+}
+
+.menu-naw {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+  margin-right: 29px;
+  font-size: 12px;
+}
