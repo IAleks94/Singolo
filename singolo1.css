@@ -84,7 +84,7 @@ li:last-child > .menu-link::after {
 }
 
 .slider-arrow {
-  background: url(/assets/arrow-left.png) no-repeat;
+  background: url(./assets/arrow-left.png) no-repeat;
   background-size: contain;
   width: 16px;
   height: 27px;
@@ -110,7 +110,7 @@ li:last-child > .menu-link::after {
   position: relative;
   left: -5px;
   margin-bottom: 10px;
-  background-image: url(/assets/phone-vert.png);
+  background-image: url(./assets/phone-vert.png);
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -119,7 +119,7 @@ li:last-child > .menu-link::after {
   height: 240px;
   width: 483px;
   left: 8px;
-  background-image: url(/assets/phone-horiz.png);
+  background-image: url(./assets/phone-horiz.png);
 }
 
 .phone-wind-h {
