@@ -26,6 +26,8 @@ body {
 
 .logo {
   text-transform: uppercase;
+  color: white;
+  text-decoration: none;
   margin-top: 1px;
   font-size: 25px;
   line-height: 25px;
@@ -94,7 +96,7 @@ li:last-child > .menu-link::after {
   cursor: pointer;
 }
 
-.slider-arrow:hover{
+.slider-arrow:hover {
   filter: grayscale(75%);
 }
 
@@ -132,4 +134,35 @@ li:last-child > .menu-link::after {
   position: absolute;
   left: 10px;
   top: 60px;
+}
+
+.services-content {
+  color: #666d89;
+}
+
+.services-title {
+  font-size: 30px;
+  font-weight: bolder;
+  margin-top: 60px;
+  margin-bottom: 18px;
+}
+
+.common-text {
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: -0.15px;
+  margin-bottom: 40px;
+}
+
+.border-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border: 2px solid #666d89;
+  border-radius: 50%;
+  background-size: inherit;
+  box-sizing: border-box;
+  margin-top: 45px;
 }
