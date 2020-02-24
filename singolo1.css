@@ -7,16 +7,19 @@ body {
 }
 .header {
   color: white;
+  background-color: #2d303a;
 }
 .conteiner {
   width: 1020px;
+  padding: 0 40px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 .header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2d303a;
+
   border-bottom: 5px solid #323746;
   min-height: 90px;
 }
@@ -24,15 +27,22 @@ body {
 .logo {
   text-transform: uppercase;
   margin-top: 1px;
-  margin-left: 40px;
   font-size: 25px;
+  line-height: 25px;
   font-weight: bold;
+  letter-spacing: -0.7px;
+}
+
+.logo-star {
+  color: #f06c64;
 }
 .menu__ul {
   display: flex;
   margin-top: 10px;
   list-style-type: none;
-  margin-right: 35px;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: bold;
 }
 .menu-link {
   display: flex;
@@ -40,11 +50,10 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   color: white;
-  font-size: 12px;
-  font-weight: bold;
+  transition-duration: 0.5s;
 }
 
-li:first-child>.menu-link,
+li:first-child > .menu-link,
 .menu-link:hover {
   color: #f06c64;
 }
@@ -53,19 +62,74 @@ li:first-child>.menu-link,
   content: "";
   width: 3px;
   height: 3px;
-  margin: 0 14px;
+  margin: 0 13px;
   background-color: #494e62;
 }
 
-li:last-child>.menu-link::after {
+li:last-child > .menu-link::after {
   content: "";
   width: 0;
   height: 0;
   margin: 0;
 }
-
-.slider-conteiner {
-  height: 600px;
-  width: 100%;
+.slider {
   background-color: #f06c64;
+}
+
+.slider-box {
+  height: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slider-arrow {
+  background: url(/assets/arrow-left.png) no-repeat;
+  background-size: contain;
+  width: 16px;
+  height: 27px;
+  transform: translateY(-5px);
+  border: none;
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+
+.slider-arrow:hover{
+  filter: grayscale(75%);
+}
+
+.slider-arrow.right {
+  transform: rotate(180deg) translateY(5px);
+}
+
+.phone-horiz,
+.phone-vert {
+  height: 483px;
+  width: 240px;
+  border: none;
+  position: relative;
+  left: -5px;
+  margin-bottom: 10px;
+  background-image: url(/assets/phone-vert.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.phone-horiz {
+  height: 240px;
+  width: 483px;
+  left: 8px;
+  background-image: url(/assets/phone-horiz.png);
+}
+
+.phone-wind-h {
+  position: absolute;
+  left: 57px;
+  top: 10px;
+}
+
+.phone-wind-v {
+  position: absolute;
+  left: 10px;
+  top: 60px;
 }
