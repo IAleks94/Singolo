@@ -8,6 +8,7 @@ body {
 .header {
   color: white;
   background-color: #2d303a;
+  border-bottom: 5px solid #323746;
 }
 .conteiner {
   width: 1020px;
@@ -19,25 +20,27 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  border-bottom: 5px solid #323746;
   min-height: 90px;
 }
 
 .logo {
+  display: inline-block;
   text-transform: uppercase;
   color: white;
   text-decoration: none;
-  margin-top: 1px;
   font-size: 25px;
   line-height: 25px;
   font-weight: bold;
   letter-spacing: -0.7px;
 }
 
-.logo-star {
+.logo::after{
+  content: '*';
   color: #f06c64;
+  font-weight: normal;
+  f
 }
+
 .menu__ul {
   display: flex;
   margin-top: 10px;
@@ -52,12 +55,13 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   color: white;
-  transition-duration: 0.5s;
+ 
 }
 
 li:first-child > .menu-link,
 .menu-link:hover {
   color: #f06c64;
+  transition-duration: 0.5s;
 }
 
 .menu-link::after {
@@ -92,12 +96,13 @@ li:last-child > .menu-link::after {
   height: 27px;
   transform: translateY(-5px);
   border: none;
-  transition-duration: 0.5s;
+  
   cursor: pointer;
 }
 
 .slider-arrow:hover {
   filter: grayscale(75%);
+  transition-duration: 0.5s;
 }
 
 .slider-arrow.right {
@@ -135,7 +140,10 @@ li:last-child > .menu-link::after {
   left: 10px;
   top: 60px;
 }
-
+.services {
+ background-color: #f2f2f2;
+ padding-top: 60px;
+}
 .services-content {
   color: #666d89;
 }
@@ -143,7 +151,7 @@ li:last-child > .menu-link::after {
 .services-title {
   font-size: 30px;
   font-weight: bolder;
-  margin-top: 60px;
+
   margin-bottom: 18px;
 }
 
@@ -151,7 +159,19 @@ li:last-child > .menu-link::after {
   font-size: 18px;
   line-height: 30px;
   letter-spacing: -0.15px;
-  margin-bottom: 40px;
+  margin-bottom: 45px;
+}
+
+.services-cards{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+}
+
+.card {
+  width: 300px;
+  display: flex; 
+  margin-bottom: 31px;  
 }
 
 .border-img {
@@ -164,5 +184,21 @@ li:last-child > .menu-link::after {
   border-radius: 50%;
   background-size: inherit;
   box-sizing: border-box;
-  margin-top: 45px;
 }
+
+.card-content {
+  width: 220px;
+  margin-left: 20px;
+}
+
+.card-title {
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: bolder;
+  margin-bottom: 11px;
+}
+
+.card-text {
+  font-size: 12px;
+  line-height: 21.5px;
+ }
