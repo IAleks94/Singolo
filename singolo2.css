@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Lato", sans-serif;
+}
+.conteiner {
+  width: 1020px;
+  padding: 0 40px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.portfolio {
+  color: #666d89;
+  background-color: #2d303a;
+  padding-top: 71px;
+}
+
+.section-title {
+  font-size: 30px;
+  line-height: 17px;
+  margin-bottom: 27px;
+}
+
+.section-text {
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: -0.5px;
+}
+
+.menu-filter {
+  margin-top: 10px;
+}
+
+.btn-filter {
+  font-size: 12px;
+  line-height: 12px;
+  padding: 5px;
+  margin-left: 5px;
+  border: 1px solid #666d89;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #666d89;
+}
+
+.btn-filter:first-child {
+  margin-left: 0;
+  padding: 5px 7px;
+}
+
+.btn-filter:hover {
+  border-color: white;
+  color: white;
+  transition-duration: 0.5s;
+}
+
+.gallerey {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 19px;
+  padding-bottom: 51px;
+}
+
+.img-conteiner{
+width: 220px;
+height: 190px;
+margin-bottom: 17px;
+}
+.about-us {
+  padding-top: 70px;
+}
+.worker-card {
+  width: 300px;
+  margin-top: 46px;
+}
+
+.worker-name {
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  margin-top: 11px;
+}
+
+.worker-text {
+  margin-top: 11px;
+  font-size: 12px;
+  line-height: 21.5px;
+}
+
