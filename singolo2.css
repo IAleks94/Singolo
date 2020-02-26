@@ -16,6 +16,8 @@ body {
   color: #666d89;
   background-color: #2d303a;
   padding-top: 71px;
+  padding-bottom: 46px;
+  border-bottom: 7px solid #323746;
 }
 
 .section-title {
@@ -60,8 +62,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 19px;
-  padding-bottom: 51px;
+  margin-top: 18px;
 }
 
 .img-conteiner{
@@ -71,9 +72,10 @@ margin-bottom: 17px;
 }
 .about-us {
   color: #666d89;
+  background-color: #f2f2f2;
   padding-top: 70px;
-  padding-bottom: 70px;
-  border-bottom: 7px solid white;
+  padding-bottom: 67px;
+  border-bottom: 5px solid white;
 }
 
 .workers {
@@ -88,13 +90,14 @@ margin-bottom: 17px;
 
 .worker-name {
   font-size: 18px;
-  font-weight: bold;
+  font-weight: bolder;
   letter-spacing: -1px;
-  margin-top: 11px;
+  margin-top: 12px;
+  white-space: nowrap;
 }
 
 .worker-text {
-  margin-top: 11px;
+  margin-top: 10px;
   font-size: 12px;
   line-height: 21.5px;
 }
