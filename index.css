@@ -2,20 +2,24 @@
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: "Lato", sans-serif;
 }
+
 .header {
   color: white;
   background-color: #2d303a;
   border-bottom: 5px solid #323746;
 }
+
 .conteiner {
   width: 1020px;
   padding: 0 40px;
   margin: 0 auto;
   box-sizing: border-box;
 }
+
 .header-content {
   display: flex;
   justify-content: space-between;
@@ -34,7 +38,7 @@ body {
   letter-spacing: -0.7px;
 }
 
-.logo::after{
+.logo::after {
   content: '*';
   color: #f06c64;
   font-weight: normal;
@@ -48,16 +52,17 @@ body {
   line-height: 12px;
   font-weight: bold;
 }
+
 .menu-link {
   display: flex;
   align-items: center;
   text-decoration: none;
   text-transform: uppercase;
   color: white;
- 
+
 }
 
-li:first-child > .menu-link,
+li:first-child>.menu-link,
 .menu-link:hover {
   color: #f06c64;
   transition-duration: 0.5s;
@@ -71,12 +76,13 @@ li:first-child > .menu-link,
   background-color: #494e62;
 }
 
-li:last-child > .menu-link::after {
+li:last-child>.menu-link::after {
   content: "";
   width: 0;
   height: 0;
   margin: 0;
 }
+
 .slider {
   background-color: #f06c64;
 }
@@ -95,7 +101,7 @@ li:last-child > .menu-link::after {
   height: 27px;
   transform: translateY(-5px);
   border: none;
-  
+
   cursor: pointer;
 }
 
@@ -139,10 +145,12 @@ li:last-child > .menu-link::after {
   left: 10px;
   top: 60px;
 }
+
 .services {
- background-color: #f2f2f2;
- padding-top: 60px;
+  background-color: #f2f2f2;
+  padding-top: 60px;
 }
+
 .services-content {
   color: #666d89;
 }
@@ -161,16 +169,16 @@ li:last-child > .menu-link::after {
   margin-bottom: 45px;
 }
 
-.services-cards{
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
+.services-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .card {
   width: 300px;
-  display: flex; 
-  margin-bottom: 31px;  
+  display: flex;
+  margin-bottom: 31px;
 }
 
 .border-img {
@@ -200,10 +208,10 @@ justify-content: space-between;
 .card-text {
   font-size: 12px;
   line-height: 21.5px;
- }
- /* part 2 */
+}
 
- .portfolio {
+
+.portfolio {
   color: #666d89;
   background-color: #2d303a;
   padding-top: 71px;
@@ -255,11 +263,12 @@ justify-content: space-between;
   padding-bottom: 51px;
 }
 
-.img-conteiner{
-width: 220px;
-height: 190px;
-margin-bottom: 17px;
+.img-conteiner {
+  width: 220px;
+  height: 190px;
+  margin-bottom: 17px;
 }
+
 .about-us {
   color: #666d89;
   padding-top: 70px;
