@@ -70,8 +70,17 @@ height: 190px;
 margin-bottom: 17px;
 }
 .about-us {
+  color: #666d89;
   padding-top: 70px;
+  padding-bottom: 70px;
+  border-bottom: 7px solid white;
 }
+
+.workers {
+  display: flex;
+  justify-content: space-between;
+}
+
 .worker-card {
   width: 300px;
   margin-top: 46px;
@@ -90,3 +99,29 @@ margin-bottom: 17px;
   line-height: 21.5px;
 }
 
+.social-links {
+  margin-top: 22px;
+  width: 154px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.social-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #666d89;
+  border-radius: 50%;
+}
+
+.social-link:hover>.social-img {
+  filter: invert(50%) brightness(2);
+  transition-duration: 0.5s;
+}
+
+.social-link:hover {
+  background-color: #666d89;
+  transition-duration: 0.5s;
+}
