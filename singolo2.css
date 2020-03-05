@@ -63,6 +63,8 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 18px;
+  max-height: 621px;  
+  overflow: hidden;
 }
 
 .img-conteiner{
