@@ -46,11 +46,13 @@ body {
 
 .menu__ul {
   display: flex;
+  justify-content: space-between;
   margin-top: 10px;
   list-style-type: none;
   font-size: 12px;
   line-height: 12px;
   font-weight: bold;
+  width: 370px;
 }
 
 .menu-link {
@@ -148,7 +150,7 @@ li:last-child>.menu-link::after {
 .services {
   background-color: #f2f2f2;
   padding-top: 60px;
-  padding-bottom: 31px;
+  padding-bottom: 26px;
   border-bottom: 7px solid white;
 }
 
@@ -180,7 +182,7 @@ li:last-child>.menu-link::after {
 .card {
   width: 300px;
   display: flex;
-  margin-bottom: 31px;
+  margin-bottom: 36px;
   overflow: hidden;
 }
 
