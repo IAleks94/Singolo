@@ -8,9 +8,14 @@ body {
 }
 
 .header {
+  position: fixed;
+  margin: 0 auto;
+  width: 100%;
   color: white;
   background-color: #2d303a;
   border-bottom: 5px solid #323746;
+  z-index: 100;
+
 }
 
 .conteiner {
@@ -64,7 +69,7 @@ body {
 
 }
 
-.menu-link:hover {
+.menu-activ, .menu-link:hover {
   color: #f06c64;
   transition-duration: 0.5s;
 }
@@ -86,6 +91,7 @@ li:last-child>.menu-link::after {
 
 .slider {
   background-color: #f06c64;
+  padding-top: 92px;
 }
 
 .slider-box {
