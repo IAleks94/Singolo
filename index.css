@@ -101,6 +101,18 @@ li:last-child>.menu-link::after {
   align-items: center;
 }
 
+.slider-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hiden {
+  display: none;
+}
+
+
+
 .slider-arrow {
   background: url(./assets/arrow-left.png) no-repeat;
   background-size: contain;
@@ -134,6 +146,32 @@ li:last-child>.menu-link::after {
   background-size: contain;
 }
 
+.pnone-btn {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 86.5px;
+  top: 408px;
+  border-radius: 50%;
+  z-index: 90;
+  cursor: pointer;
+}
+
+
+.phone-horiz > .pnone-btn {
+  left: 8px;
+  top: 86.5px;
+}
+
+.phone-group > .pnone-btn {
+  left: 227px;
+  top: 423px;
+}
+
+.pnone-btn:hover {
+  border: black 1px solid;
+}
+
 .phone-horiz {
   height: 240px;
   width: 483px;
@@ -151,6 +189,16 @@ li:last-child>.menu-link::after {
   position: absolute;
   left: 10px;
   top: 60px;
+}
+
+.phone-group {
+  position: relative;
+  height: 500px;
+  width: 516px;
+  margin-bottom: 10px;
+  background-image: url(./assets/phone-group.png);
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .services {
