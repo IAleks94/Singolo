@@ -95,6 +95,7 @@ li:last-child>.menu-link::after {
   padding-top: 92px;
   scroll-margin-top: 96px;
   transition-duration: 1s;
+  border-bottom: 6px solid #EA676B;
 }
 
 .slider-box {
@@ -531,7 +532,7 @@ li:last-child>.menu-link::after {
   margin-bottom: 28px;
 }
 
-.get-a-quote-text {
+.popap-text, .get-a-quote-text {
   font-size: 18px;
   line-height: 30px;
   letter-spacing: -0.2px;
@@ -582,7 +583,7 @@ li:last-child>.menu-link::after {
   box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, .3);
 }
 
-.btn-sybmit {
+.popap-btn, .btn-sybmit {
   text-transform: uppercase;
   color: #f0d8d9;
   background-color: #d6564f;
@@ -598,6 +599,7 @@ li:last-child>.menu-link::after {
   padding-top: 2px;
 }
 
+
 .contact-info-title {
   font-size: 18px;
   line-height: 17.8px;
@@ -606,7 +608,7 @@ li:last-child>.menu-link::after {
   margin-bottom: 10px;
 }
 
-.contact-info-text {
+ .contact-info-text {
   font-size: 12px;
   line-height: 21.56px;
   margin-bottom: 25px;
@@ -647,4 +649,25 @@ li:last-child>.menu-link::after {
   margin-top: 20px;
   font-size: 12px;
   color: #666d89;
+}
+
+.popap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  left: 50%;
+  padding: 15px 40px;
+  border-radius: 15px;
+  background-color: #2d303a;
+  border: 2px solid #323746;
+  color: #f0d8d9;
+  transform: translate(-50%, -50%);
+  opacity: 0.9;
+}
+
+.popap > .popap-text {
+  margin-bottom: 15px;
+  
 }
