@@ -2,22 +2,33 @@
 document.addEventListener('click', () => clickHendler());
 
 let arrMenuLink = document.querySelectorAll('.menu-link');
+let arrFilters =  document.querySelectorAll('.btn-filter');
 
 function clickHendler() {
     let target = event.target;
     let menuLink = target.classList.contains('menu-link');
     let sliderArroy = target.classList.contains('slider-arrow');
     let phoneBtn = target.classList.contains('pnone-btn');
-    if (menuLink) {
+    let btnFilter = target.classList.contains('btn-filter');
+    if (menuLink || btnFilter) {
         event.preventDefault();
-        arrMenuLink.forEach(item => item.classList.remove('menu-activ'))
-        target.classList.add('menu-activ');
-        let element = document.querySelector(`${target.hash}`)
-        element.scrollIntoView({
-            block: "start",
-            inline: "nearest",
-            behavior: "smooth"
-        });
+        let activClass = 'menu-activ';
+        let arr = arrMenuLink;
+        if (btnFilter) {
+            activClass = 'filter-activ';
+            arr = arrFilters;
+            gallereyMikher();
+        } else {
+            let element = document.querySelector(`${target.hash}`)
+            element.scrollIntoView({
+                block: "start",
+                inline: "nearest",
+                behavior: "smooth"
+            });
+        }
+        arr.forEach(item => item.classList.remove(activClass))
+        target.classList.add(activClass);
+
     } else if (sliderArroy) {
         if (target.classList.contains('right')) {
             i++
@@ -30,7 +41,7 @@ function clickHendler() {
         let pnone = target.parentElement;
         let blackDisplay = pnone.firstElementChild;
         blackDisplay.classList.toggle('visible')      
-    }
+    } 
 
 }
 
@@ -58,6 +69,17 @@ function niddenSliders() {
     }
 }
 
+
+//Галерея 
+
+function gallereyMikher() {
+    let galerey = document.querySelector('.gallerey')
+    let arrGaleryItems = Array.from(galerey.getElementsByClassName('img-conteiner'));
+    
+    let newArrGalerey = arrGaleryItems.sort(() => Math.random()-0.5)
+    galerey.innerHTML ="";
+    newArrGalerey.forEach(item => galerey.append(item));
+} 
 
 niddenSliders();
 
