@@ -2,15 +2,21 @@
 document.addEventListener('click', () => clickHendler());
 
 let arrMenuLink = document.querySelectorAll('.menu-link');
-let arrFilters =  document.querySelectorAll('.btn-filter');
+let arrFilters = document.querySelectorAll('.btn-filter');
+let galerey = document.querySelector('.gallerey')
+let arrGaleryItems = Array.from(galerey.getElementsByClassName('img-conteiner'));
+ let arrGaleryImgs = Array.from(galerey.getElementsByClassName('gallerey-img'));
 
 function clickHendler() {
     let target = event.target;
+    console.log('target: ', target);
+    
     let menuLink = target.classList.contains('menu-link');
     let sliderArroy = target.classList.contains('slider-arrow');
     let phoneBtn = target.classList.contains('pnone-btn');
     let btnFilter = target.classList.contains('btn-filter');
-    if (menuLink || btnFilter) {
+    let galeryItem = target.classList.contains('gallerey-img');
+    if (menuLink || btnFilter || galeryItem) {
         event.preventDefault();
         let activClass = 'menu-activ';
         let arr = arrMenuLink;
@@ -18,7 +24,10 @@ function clickHendler() {
             activClass = 'filter-activ';
             arr = arrFilters;
             gallereyMikher();
-        } else {
+        }  else if (galeryItem) {
+            activClass = 'img-activ';
+            arr = arrGaleryImgs;
+        }   else {
             let element = document.querySelector(`${target.hash}`)
             element.scrollIntoView({
                 block: "start",
@@ -34,38 +43,39 @@ function clickHendler() {
             i++
         } else {
             --i
-        } 
+        }
         niddenSliders();
     } else if (phoneBtn) {
-         // да да можно все это записать одной строкой
+        // да да можно все это записать одной строкой
         let pnone = target.parentElement;
         let blackDisplay = pnone.firstElementChild;
-        blackDisplay.classList.toggle('visible')      
-    } 
+        blackDisplay.classList.toggle('visible')
+    }
 
 }
 
 // блок слайдера
 let i = 0;
+
 function niddenSliders() {
     let sliderItems = document.querySelectorAll('.slider-item');
     if (i === sliderItems.length) {
         i = 0;
     } else if (i < 0) {
-        i = sliderItems.length-1;
+        i = sliderItems.length - 1;
     }
     sliderItems.forEach((item, index) => {
         if (i === index) {
-                item.classList.remove('hiden');
-            } else {
-                item.classList.add('hiden');
-            }
+            item.classList.remove('hiden');
+        } else {
+            item.classList.add('hiden');
+        }
     })
     if (!sliderItems[1].classList.contains('hiden')) {
-    let slider = document.querySelector('.slider');
-    slider.style.backgroundColor = '#648BF0';
+        let slider = document.querySelector('.slider');
+        slider.style.backgroundColor = '#648BF0';
     } else {
-        slider.style.backgroundColor = '#F06C64'; 
+        slider.style.backgroundColor = '#F06C64';
     }
 }
 
@@ -73,14 +83,11 @@ function niddenSliders() {
 //Галерея 
 
 function gallereyMikher() {
-    let galerey = document.querySelector('.gallerey')
-    let arrGaleryItems = Array.from(galerey.getElementsByClassName('img-conteiner'));
-    
-    let newArrGalerey = arrGaleryItems.sort(() => Math.random()-0.5)
-    galerey.innerHTML ="";
+
+
+    let newArrGalerey = arrGaleryItems.sort(() => Math.random() - 0.5)
+    galerey.innerHTML = "";
     newArrGalerey.forEach(item => galerey.append(item));
-} 
+}
 
 niddenSliders();
-
-

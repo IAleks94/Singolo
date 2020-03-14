@@ -363,15 +363,20 @@ li:last-child>.menu-link::after {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 18px;
-  max-height: 621px;  
-  overflow: hidden
+  margin-top: 13px;
+  max-height: 621px;
+  overflow: hidden;
+  padding: 5px;
 }
 
 .img-conteiner {
   width: 220px;
   height: 190px;
   margin-bottom: 17px;
+}
+
+.img-activ {
+  outline: #F06C64 solid 5px;
 }
 
 .about-us {
