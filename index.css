@@ -164,8 +164,8 @@ li:last-child>.menu-link::after {
 }
 
 .phone-group > .pnone-btn {
-  left: 227px;
-  top: 423px;
+  left: 222px;
+  top: 413px;
 }
 
 .pnone-btn:hover {
@@ -191,15 +191,51 @@ li:last-child>.menu-link::after {
   top: 60px;
 }
 
+.black-display {
+  width: 192px;
+  height: 338px;
+  border-radius: 5px;
+  background-color: black;
+  border: 3px solid grey;
+  box-sizing: border-box;
+
+
+}
+.black-display-goriz {
+  width: 338px;
+  height: 192px;
+  border-radius: 5px;
+  background-color: black;
+  border: 3px solid grey;
+  box-sizing: border-box;
+}
+
+.visible {
+  z-index: 50;
+}
+
+/* 2 slid */
 .phone-group {
   position: relative;
   height: 500px;
-  width: 516px;
+  width: 500px;
   margin-bottom: 10px;
   background-image: url(./assets/phone-group.png);
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+.phone-group-wind {
+  height: 342px;
+  width: 195px;
+  position: absolute;
+  left: 145px;
+  top: 62px;
+  border-radius: 5px;
+  border: 3px solid grey;
+  box-sizing: border-box;
+}
+
 
 .services {
   background-color: #f2f2f2;

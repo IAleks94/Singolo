@@ -7,6 +7,7 @@ function clickHendler() {
     let target = event.target;
     let menuLink = target.classList.contains('menu-link');
     let sliderArroy = target.classList.contains('slider-arrow');
+    let phoneBtn = target.classList.contains('pnone-btn');
     if (menuLink) {
         event.preventDefault();
         arrMenuLink.forEach(item => item.classList.remove('menu-activ'))
@@ -24,6 +25,11 @@ function clickHendler() {
             --i
         } 
         niddenSliders();
+    } else if (phoneBtn) {
+         // да да можно все это записать одной строкой
+        let pnone = target.parentElement;
+        let blackDisplay = pnone.firstElementChild;
+        blackDisplay.classList.toggle('visible')      
     }
 
 }
@@ -46,7 +52,6 @@ function niddenSliders() {
     })
     if (!sliderItems[1].classList.contains('hiden')) {
     let slider = document.querySelector('.slider');
-    console.log(slider);
     slider.style.backgroundColor = '#648BF0';
     } else {
         slider.style.backgroundColor = '#F06C64'; 
