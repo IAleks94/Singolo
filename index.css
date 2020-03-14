@@ -92,6 +92,7 @@ li:last-child>.menu-link::after {
 .slider {
   background-color: #f06c64;
   padding-top: 92px;
+  scroll-margin-top: 96px;
 }
 
 .slider-box {
@@ -238,6 +239,7 @@ li:last-child>.menu-link::after {
 
 
 .services {
+  scroll-margin-top: 94px;
   background-color: #f2f2f2;
   padding-top: 60px;
   padding-bottom: 26px;
@@ -309,6 +311,7 @@ li:last-child>.menu-link::after {
 /* part 2 */
 
 .portfolio {
+  scroll-margin-top: 94px;
   color: #666d89;
   background-color: #2d303a;
   padding-top: 67px;
@@ -342,6 +345,7 @@ li:last-child>.menu-link::after {
   border-radius: 5px;
   background-color: transparent;
   color: #666d89;
+  outline: none;
 }
 
 .btn-filter:first-child {
@@ -349,7 +353,7 @@ li:last-child>.menu-link::after {
   padding: 5px 7px;
 }
 
-.btn-filter:hover {
+.filter-activ, .btn-filter:hover {
   border-color: white;
   color: white;
   transition-duration: 0.5s;
@@ -376,6 +380,7 @@ li:last-child>.menu-link::after {
   padding-top: 70px;
   padding-bottom: 66px;
   border-bottom: 6.5px solid white;
+  scroll-margin-top: 94px;
 }
 
 .workers {
