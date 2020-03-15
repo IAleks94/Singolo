@@ -50,7 +50,6 @@ function clickHendler() {
     } else {
       previouseItem(currentItem);
     }
-    // niddenSliders();
   } else if (phoneBtn) {
     // да да можно все это записать одной строкой
     let pnone = target.parentElement;
@@ -124,21 +123,30 @@ function changeBG() {
 }
 
 //Галерея
+let arrCoordImg = arrGaleryItems.map(item => item.getBoundingClientRect())
+arrGaleryItems.forEach((item, index) => {
+  let {top, left} = arrCoordImg[index];
+  item.style.top = 0 + 'px';
+  item.style.left = 0 + 'px';
+})
+
 function gallereyMikher() {
-  let newArrGalerey = arrGaleryItems.sort(() => Math.random() - 0.5);
-  galerey.innerHTML = "";
-  newArrGalerey.forEach(item => galerey.append(item));
+   let arrCoordImg = arrGaleryItems.map(item => item.getBoundingClientRect())
+   let newArrCoordImg = arrCoordImg.slice().sort((a, b) => Math.random() - 0.5);
+   arrGaleryItems.forEach((item, index) => {
+   let {top, left} = newArrCoordImg[index];
+    item.style.top = (+item.style.top.slice(0, -2) + top - arrCoordImg[index].top) + 'px';
+    item.style.left = (+item.style.left.slice(0, -2) + left - arrCoordImg[index].left) + 'px';
+   })
 }
 
-//форма
-
+//Форма
 let form = document.querySelector(".quote-form");
 form.addEventListener("submit", () => submitHendler());
 
 function submitHendler() {
   event.preventDefault();
   let isValid = form.checkValidity();
-  event.preventDefault();
   if (isValid) {
     document.body.append(popapCreater());
     document.body.style.overflow = "hidden";

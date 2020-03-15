@@ -431,9 +431,11 @@ li:last-child>.menu-link::after {
 }
 
 .img-conteiner {
+  position: relative;
   width: 220px;
   height: 190px;
   margin-bottom: 17px;
+  transition-duration: 1s;
 }
 
 .img-activ {
