@@ -18,8 +18,8 @@
         <h1><a href="./index.html" class="logo">singolo</a></h1>
         <nav class="menu">
           <ul class="menu__ul">
-            <li><a href="./index.html" class="menu-link">home</a></li>
-            <li><a href="#srvices" class="menu-link">srvices</a></li>
+            <li><a href="#slider" class="menu-link">home</a></li>
+            <li><a href="#services" class="menu-link">services</a></li>
             <li><a href="#portfolio" class="menu-link">portfolio</a></li>
             <li><a href="#about" class="menu-link">about</a></li>
             <li><a href="#contact" class="menu-link">contact</a></li>
@@ -29,23 +29,39 @@
     </div>
   </header>
   <!-- heder end -->
-  <div class="slider">
+  <div class="slider" id="slider">
     <div class="conteiner">
       <div class="slider-box">
         <button class="slider-arrow left"></button>
-        <div class="phone-vert">
-          <img class="phone-wind-v" src="./assets/phone-wind-v.png" alt="phone-vert">
+        <div class="slider-item active">
+          <div class="phone-vert">
+            <div class="black-display phone-wind-v"></div>
+            <img class="phone-wind-v" src="./assets/phone-wind-v.png" alt="phone-display">
+            <div class="pnone-btn"></div>
+          </div>
+          <div class="phone-horiz">
+            <div class="black-display-goriz phone-wind-h"></div>
+            <img class="phone-wind-h" src="./assets/phone-wind-h.png" alt="phone-display">
+            <div class="pnone-btn"></div>
+          </div>
         </div>
-        <div class="phone-horiz">
-          <img class="phone-wind-h" src="./assets/phone-wind-h.png" alt="phone-horiz">
+        <!-- end  slider-item -->
+        <div class="slider-item">
+          <div class="phone-group">
+            <div class="black-display phone-group-wind"></div>
+            <img class="phone-group-wind" src="./assets/phone-vertical-display-group.png" alt="phone-display">
+            <div class="pnone-btn"></div>
+          </div>
         </div>
+        <!-- end  slider-item -->
+
         <button class="slider-arrow right"></button>
 
       </div>
     </div>
   </div>
   <!-- slider end -->
-  <div class="services" id="srvices">
+  <div class="services" id="services">
     <div class="conteiner">
       <div class="services-content">
         <div class="general-info">
@@ -179,7 +195,7 @@
             <img src="./assets/gallery/Project-8.png" alt="ammeter" class="gallerey-img" />
           </div>
           <!-- test -->
-          <div class="img-conteiner">
+          <!-- <div class="img-conteiner">
             <img src="./assets/gallery/Project-7.png" alt="text" class="gallerey-img" />
           </div>
           <div class="img-conteiner">
@@ -187,7 +203,7 @@
           </div>
           <div class="img-conteiner">
             <img src="./assets/gallery/Project-8.png" alt="ammeter" class="gallerey-img" />
-          </div>
+          </div> -->
           <!-- end test  -->
         </div>
       </div>
@@ -322,6 +338,7 @@
     </div>
   </footer>
   <!-- end footer -->
+  <script src="./script.js"></script>
 </body>
 
 </html>
