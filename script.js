@@ -80,7 +80,6 @@ function hideItem(direction) {
 
 function hideAnimationendHendler(direction) {
   event.target.classList.remove("active", direction);
-  console.log("прячем", event.target);
 }
 
 function showItem(direction) {
@@ -94,22 +93,20 @@ function showItem(direction) {
 function showAnimationendHendler(direction) {
   event.target.classList.remove("next", direction);
   event.target.classList.add("active");
-  console.log("отображаем", event.target);
   isEnabled = true;
 }
 
 function previouseItem(n) {
-  hideItem("to-right");
+  hideItem("to-left");
   changeCurrentItem(n - 1);
-  showItem("from-left");
+  showItem("from-right");
   changeBG();
 }
 
 function nextItem(n) {
-  hideItem("to-left");
+  hideItem("to-right");
   changeCurrentItem(n + 1);
-  console.log("вызываум showItem");
-  showItem("from-right");
+  showItem("from-left");
   changeBG();
 }
 

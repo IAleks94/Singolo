@@ -113,7 +113,7 @@ li:last-child>.menu-link::after {
   display: none;
   justify-content: center;
   align-items: center;
-  animation: forwards 1s;
+  animation: ease-in-out 1s;
   width: 800px;
 }
 
