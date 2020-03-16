@@ -27,7 +27,9 @@ function clickHendler() {
     if (btnFilter) {
       activClass = "filter-activ";
       arr = arrFilters;
+      if (animationEnd) {
       gallereyMikher();
+      }
     } else if (galeryItem) {
       activClass = "img-activ";
       arr = arrGaleryImgs;
@@ -123,18 +125,23 @@ function changeBG() {
 }
 
 // -------------------------Галерея -----------------------------------
-
+let animationEnd = true;
 function gallereyMikher() {
-  let arrCoordImg = arrGaleryItems.map(item => item.getBoundingClientRect())
-  let newArrCoordImg = arrCoordImg.slice().sort((a, b) => Math.random() - 0.5);
-  arrGaleryItems.forEach((item, index) => {
-    let {
-      top,
-      left
-    } = newArrCoordImg[index];
-    item.style.top = (+item.style.top.slice(0, -2) + top - arrCoordImg[index].top) + 'px';
-    item.style.left = (+item.style.left.slice(0, -2) + left - arrCoordImg[index].left) + 'px';
-  })
+    animationEnd = false;
+    let arrCoordImg = arrGaleryItems.map(item => item.getBoundingClientRect())
+    let newArrCoordImg = arrCoordImg.slice().sort((a, b) => Math.random() - 0.5);
+    arrGaleryItems.forEach((item, index) => {
+      let {
+        top,
+        left
+      } = newArrCoordImg[index];
+      item.style.top = (+item.style.top.slice(0, -2) + top - arrCoordImg[index].top) + 'px';
+      item.style.left = (+item.style.left.slice(0, -2) + left - arrCoordImg[index].left) + 'px';
+    });
+    setTimeout(() => {
+      animationEnd = true;
+    }, 1000);
+
 }
  
 // -------------------------Форма -----------------------------------
