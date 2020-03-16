@@ -9,7 +9,7 @@ let arrGaleryItems = Array.from(
 );
 let arrGaleryImgs = Array.from(galerey.getElementsByClassName("gallerey-img"));
 
-//Обработчик кликов
+// --------------------Обработчик кликов ------------------------------
 function clickHendler() {
   let target = event.target;
   console.log("target: ", target);
@@ -58,7 +58,7 @@ function clickHendler() {
   }
 }
 
-// блок слайдера
+// -----------------------блок слайдера -----------------------------
 let sliderItems = document.querySelectorAll(".slider-item");
 let currentItem = 0;
 let isEnabled = true;
@@ -122,25 +122,22 @@ function changeBG() {
   }
 }
 
-//Галерея
-let arrCoordImg = arrGaleryItems.map(item => item.getBoundingClientRect())
-arrGaleryItems.forEach((item, index) => {
-  let {top, left} = arrCoordImg[index];
-  item.style.top = 0 + 'px';
-  item.style.left = 0 + 'px';
-})
+// -------------------------Галерея -----------------------------------
 
 function gallereyMikher() {
-   let arrCoordImg = arrGaleryItems.map(item => item.getBoundingClientRect())
-   let newArrCoordImg = arrCoordImg.slice().sort((a, b) => Math.random() - 0.5);
-   arrGaleryItems.forEach((item, index) => {
-   let {top, left} = newArrCoordImg[index];
+  let arrCoordImg = arrGaleryItems.map(item => item.getBoundingClientRect())
+  let newArrCoordImg = arrCoordImg.slice().sort((a, b) => Math.random() - 0.5);
+  arrGaleryItems.forEach((item, index) => {
+    let {
+      top,
+      left
+    } = newArrCoordImg[index];
     item.style.top = (+item.style.top.slice(0, -2) + top - arrCoordImg[index].top) + 'px';
     item.style.left = (+item.style.left.slice(0, -2) + left - arrCoordImg[index].left) + 'px';
-   })
+  })
 }
-
-//Форма
+ 
+// -------------------------Форма -----------------------------------
 let form = document.querySelector(".quote-form");
 form.addEventListener("submit", () => submitHendler());
 

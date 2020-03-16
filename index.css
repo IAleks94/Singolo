@@ -430,6 +430,8 @@ li:last-child>.menu-link::after {
 
 .img-conteiner {
   position: relative;
+  top: 0px;
+  left: 0px;
   width: 220px;
   height: 190px;
   margin-bottom: 17px;
