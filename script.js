@@ -97,16 +97,16 @@ function showAnimationendHendler(direction) {
 }
 
 function previouseItem(n) {
-  hideItem("to-left");
+  hideItem("to-right");
   changeCurrentItem(n - 1);
-  showItem("from-right");
+  showItem("from-left");
   changeBG();
 }
 
 function nextItem(n) {
-  hideItem("to-right");
+  hideItem("to-left");
   changeCurrentItem(n + 1);
-  showItem("from-left");
+  showItem("from-right");
   changeBG();
 }
 
