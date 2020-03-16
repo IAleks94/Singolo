@@ -294,7 +294,9 @@
         </div>
         <!-- end general-info" -->
         <form name="quote-form" action="mailto:a12344@mail.ru" enctype="text/plain" class="quote-form">
-          <input class="input-text" type="text" name="name" placeholder="Name (Required)" required />
+          <input class="input-text" type="text" name="name" placeholder="Name (Required)" required
+            pattern="[A-Za-zА-Яа-я-\s']{1,35}" maxlength="35"
+            title="Имя может содержать только латинские буквы, пробелы, девисы и символ апострофа. Максимальная длина 35 символов">
           <input class="input-text" type="email" name="email" placeholder="Email (Required)" required />
           <input class="input-text" type="text" name="subject" placeholder="Subject" />
           <textarea class="input-text textarea" name="detail" cols="30" rows="10"

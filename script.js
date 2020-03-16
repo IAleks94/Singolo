@@ -24,16 +24,21 @@ function clickHendler() {
     event.preventDefault();
     let activClass = "menu-activ";
     let arr = arrMenuLink;
+    // клик по тэгу галереи 
     if (btnFilter && animationEnd) {
       activClass = "filter-activ";
       arr = arrFilters;
       gallereyMikher();
+      // клик по картинке галереи 
     } else if (galeryItem) {
       activClass = "img-activ";
       arr = arrGaleryImgs;
+      // клик по закрывающей попап кнопке
     } else if (popapBtn) {
       document.querySelector(".popap").remove();
       document.body.style.overflow = "";
+      modslOff = true
+      // клик по ссыдке меню
     } else {
       let element = document.querySelector(`${target.hash}`);
       element.scrollIntoView({
@@ -44,12 +49,14 @@ function clickHendler() {
     }
     arr.forEach(item => item.classList.remove(activClass));
     target.classList.add(activClass);
+    // клик по стрелке слайдера
   } else if (sliderArroy && isEnabled) {
     if (target.classList.contains("right")) {
       nextItem(currentItem);
     } else {
       previouseItem(currentItem);
     }
+    // клик по кнопке телефона
   } else if (phoneBtn) {
     // да да можно все это записать одной строкой
     let pnone = target.parentElement;
@@ -143,13 +150,18 @@ function gallereyMikher() {
 let form = document.querySelector(".quote-form");
 form.addEventListener("submit", () => submitHendler());
 
+let modslOff = true
 function submitHendler() {
   event.preventDefault();
-  let isValid = form.checkValidity();
-  if (isValid) {
-    document.body.append(popapCreater());
-    document.body.style.overflow = "hidden";
+  if(modslOff) {
+    let isValid = form.checkValidity();
+    if (isValid) {
+      document.body.append(popapCreater());
+      document.body.style.overflow = "hidden";
+      modslOff = false
+    }
   }
+ 
 }
 
 function popapCreater() {
@@ -167,6 +179,9 @@ function popapCreater() {
     detail = `Описание: ${form.detail.value}`;
   }
   text.innerHTML = `Письмо отправлено </br>${subject}</br>${detail}</br>`;
+  if (text.innerHTML.length > 750) {
+    popap.style.overflowY = 'scroll';
+  }
   let btnOK = document.createElement("button");
   btnOK.className = "popap-btn";
   btnOK.innerHTML = "OK";
