@@ -511,6 +511,7 @@ li:last-child>.menu-link::after {
 /* part 3 */
 
 .get-a-quote {
+  scroll-margin-top: 95px;
   color: #f0d8d9;
   background-color: #f06c64;
   padding-top: 69px;
