@@ -125,9 +125,7 @@ li:last-child>.menu-link::after {
 
 .next {
   position: absolute;
-  top: 48px;
   width: 100%;
-
 }
 
 .to-left {
