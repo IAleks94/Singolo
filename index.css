@@ -668,9 +668,14 @@ li:last-child>.menu-link::after {
   color: #f0d8d9;
   transform: translate(-50%, -50%);
   opacity: 0.9;
+  overflow: hidden;
 }
 
 .popap > .popap-text {
+  text-align: start;
+  max-width: 600px;
+  text-overflow: ellipsis;
+  word-wrap: normal;
   margin-bottom: 15px;
   
 }

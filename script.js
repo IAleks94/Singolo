@@ -169,7 +169,7 @@ function popapCreater() {
   }
   let detail = "Без описания";
   if (form.detail.value) {
-    detail = `Описание: ${form.subject.value}`;
+    detail = `Описание: ${form.detail.value}`;
   }
   text.innerHTML = `Письмо отправлено </br>${subject}</br>${detail}</br>`;
   let btnOK = document.createElement("button");
