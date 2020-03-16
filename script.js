@@ -24,12 +24,10 @@ function clickHendler() {
     event.preventDefault();
     let activClass = "menu-activ";
     let arr = arrMenuLink;
-    if (btnFilter) {
+    if (btnFilter && animationEnd) {
       activClass = "filter-activ";
       arr = arrFilters;
-      if (animationEnd) {
       gallereyMikher();
-      }
     } else if (galeryItem) {
       activClass = "img-activ";
       arr = arrGaleryImgs;
