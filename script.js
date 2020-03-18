@@ -1,5 +1,5 @@
 "use strict";
-document.addEventListener("click", () => clickHendler());
+document.addEventListener("click", (event) => clickHendler(event));
 
 let arrMenuLink = document.querySelectorAll(".menu-link");
 let arrFilters = document.querySelectorAll(".btn-filter");
@@ -10,7 +10,7 @@ let arrGaleryItems = Array.from(
 let arrGaleryImgs = Array.from(galerey.getElementsByClassName("gallerey-img"));
 
 // --------------------Обработчик кликов ------------------------------
-function clickHendler() {
+function clickHendler(event) {
   let target = event.target;
   console.log("target: ", target);
 
@@ -21,7 +21,6 @@ function clickHendler() {
   let galeryItem = target.classList.contains("gallerey-img");
   let popapBtn = target.classList.contains("popap-btn");
   if (menuLink || btnFilter || galeryItem || popapBtn) {
-    event.preventDefault();
     let activClass = "menu-activ";
     let arr = arrMenuLink;
     // клик по тэгу галереи 
@@ -39,15 +38,7 @@ function clickHendler() {
       document.body.style.overflow = "";
       modalOff = true;
       form.reset();
-      // клик по ссыдке меню
-    } else {
-      let element = document.querySelector(`${target.hash}`);
-      element.scrollIntoView({
-        block: "start",
-        inline: "nearest",
-        behavior: "smooth"
-      });
-    }
+    } 
     arr.forEach(item => item.classList.remove(activClass));
     target.classList.add(activClass);
     // клик по стрелке слайдера
@@ -201,4 +192,22 @@ function keydownHendler() {
     document.querySelector(".popap").remove();
     document.body.style.overflow = "";
   }
+}
+
+
+// ------------ Обработка скрола-----------------
+ document.addEventListener('scroll', () => scrollHandler());
+
+function scrollHandler() {
+  let menu = document.querySelector('header');
+  // menu.classList.add('hidden');
+  let section = document.elementFromPoint(1020, menu.offsetHeight+10).closest('section');
+  // menu.classList.remove('hidden');
+  let targetId = section.id;
+   console.log('targetId: ', targetId);
+  let menuLink = document.querySelector(`a[href*=${targetId}]`);
+  // console.log('menuLink: ', menuLink); 
+  let fakeEvent = {target: menuLink,};
+  clickHendler(fakeEvent);
+
 }

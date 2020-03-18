@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Lato", sans-serif;
 }
@@ -15,8 +19,8 @@ body {
   background-color: #2d303a;
   border-bottom: 5px solid #323746;
   z-index: 100;
-
 }
+
 
 .conteiner {
   width: 1020px;
