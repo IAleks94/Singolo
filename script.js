@@ -12,7 +12,7 @@ let arrGaleryImgs = Array.from(galerey.getElementsByClassName("gallerey-img"));
 // --------------------Обработчик кликов ------------------------------
 function clickHendler(event) {
   let target = event.target;
-  
+
   let menuLink = target.classList.contains("menu-link");
   let sliderArroy = target.classList.contains("slider-arrow");
   let phoneBtn = target.classList.contains("pnone-btn");
@@ -204,5 +204,17 @@ function scrollHandler() {
   let menuLink = document.querySelector(`a[href*=${targetId}]`);
   let fakeEvent = {target: menuLink,};
   clickHendler(fakeEvent);
-
+  let scrollHeight = Math.max(
+    document.body.scrollHeight, document.documentElement.scrollHeight,
+    document.body.offsetHeight, document.documentElement.offsetHeight,
+    document.body.clientHeight, document.documentElement.clientHeight
+  );
+  console.log(window.pageYOffset);
+  console.log(Math.floor(window.pageYOffset + document.documentElement.clientHeight));
+  console.log(scrollHeight);
+  if (Math.floor(window.pageYOffset + document.documentElement.clientHeight) === scrollHeight) {
+    let contactLink = document.querySelector('a[href*=contact]');
+    let fakeContact = {target: contactLink,};
+   clickHendler(fakeContact);
+  }
 }
