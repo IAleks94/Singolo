@@ -12,7 +12,6 @@ let arrGaleryImgs = Array.from(galerey.getElementsByClassName("gallerey-img"));
 // --------------------Обработчик кликов ------------------------------
 function clickHendler(event) {
   let target = event.target;
-
   let menuLink = target.classList.contains("menu-link");
   let sliderArroy = target.classList.contains("slider-arrow");
   let phoneBtn = target.classList.contains("pnone-btn");
@@ -199,7 +198,7 @@ function keydownHendler() {
 
 function scrollHandler() {
   let menu = document.querySelector('header');
-  let section = document.elementFromPoint(1020, menu.offsetHeight+10).closest('section');
+  let section = document.elementFromPoint(0, menu.offsetHeight+10).closest('section');
   let targetId = section.id;
   let menuLink = document.querySelector(`a[href*=${targetId}]`);
   let fakeEvent = {target: menuLink,};
