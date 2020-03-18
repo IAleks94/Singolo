@@ -37,7 +37,8 @@ function clickHendler() {
     } else if (popapBtn) {
       document.querySelector(".popap").remove();
       document.body.style.overflow = "";
-      modslOff = true
+      modalOff = true;
+      form.reset();
       // клик по ссыдке меню
     } else {
       let element = document.querySelector(`${target.hash}`);
@@ -150,7 +151,7 @@ function gallereyMikher() {
 let form = document.querySelector(".quote-form");
 form.addEventListener("submit", () => submitHendler());
 
-let modslOff = true
+let modalOff = true
 function submitHendler() {
   event.preventDefault();
   if(modslOff) {
@@ -158,7 +159,7 @@ function submitHendler() {
     if (isValid) {
       document.body.append(popapCreater());
       document.body.style.overflow = "hidden";
-      modslOff = false
+      modalOff = false;
     }
   }
  
