@@ -209,9 +209,6 @@ function scrollHandler() {
     document.body.offsetHeight, document.documentElement.offsetHeight,
     document.body.clientHeight, document.documentElement.clientHeight
   );
-  console.log(window.pageYOffset);
-  console.log(Math.floor(window.pageYOffset + document.documentElement.clientHeight));
-  console.log(scrollHeight);
   if (Math.floor(window.pageYOffset + document.documentElement.clientHeight) === scrollHeight) {
     let contactLink = document.querySelector('a[href*=contact]');
     let fakeContact = {target: contactLink,};
