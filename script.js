@@ -151,6 +151,7 @@ function gallereyMikher() {
             arrGaleryItems[index].style.top = top;
             arrGaleryItems[index].style.left = left;
             });
+
     setTimeout(() => {
       animationEnd = true;
     }, 1000);
