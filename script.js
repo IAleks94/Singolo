@@ -1,7 +1,7 @@
 "use strict";
 document.addEventListener("click", (event) => clickHendler(event));
 
-let arrMenuLink = document.querySelectorAll(".menu-link");
+let arrMenuLink = Array.from(document.querySelectorAll(".menu-link"));
 let arrFilters = document.querySelectorAll(".btn-filter");
 let galerey = document.querySelector(".gallerey");
 let arrGaleryItems = Array.from(
@@ -12,12 +12,14 @@ let arrGaleryImgs = Array.from(galerey.getElementsByClassName("gallerey-img"));
 // --------------------Обработчик кликов ------------------------------
 function clickHendler(event) {
   let target = event.target;
+  console.log('target: ', target);
   let menuLink = target.classList.contains("menu-link");
   let sliderArroy = target.classList.contains("slider-arrow");
   let phoneBtn = target.classList.contains("pnone-btn");
   let btnFilter = target.classList.contains("btn-filter");
   let galeryItem = target.classList.contains("gallerey-img");
   let popapBtn = target.classList.contains("popap-btn");
+  let menuBurger = target.classList.contains('menu-btn')
   if (menuLink || btnFilter || galeryItem || popapBtn) {
     let activClass = "menu-activ";
     let arr = arrMenuLink;
@@ -50,8 +52,14 @@ function clickHendler(event) {
   } else if (phoneBtn) {
     // да да можно все это записать одной строкой
     let pnone = target.parentElement;
-    let blackDisplay = pnone.firstElementChild;
-    blackDisplay.classList.toggle("display-off");
+    let wind = pnone.querySelector('img');
+    wind.classList.toggle("display-off");
+  } else if (menuBurger) {
+    let menu = document.querySelector('.menu')
+    let logo = document.querySelector('.logo')
+    target.classList.toggle('menu-btn-active')
+    menu.classList.toggle('active')
+    logo.classList.toggle('active')
   }
 }
 
@@ -165,7 +173,7 @@ form.addEventListener("submit", () => submitHendler());
 let modalOff = true
 function submitHendler() {
   event.preventDefault();
-  if(modslOff) {
+  if(modalOff) {
     let isValid = form.checkValidity();
     if (isValid) {
       document.body.append(popapCreater());
@@ -220,10 +228,14 @@ function keydownHendler() {
 
 function scrollHandler() {
   let menu = document.querySelector('header');
-  let section = document.elementFromPoint(0, menu.offsetHeight+10).closest('section');
+  let hight = menu.offsetHeight
+   menu.style.display = 'none'
+  let section = document.elementFromPoint(0, hight + 10).closest('section');
+  menu.style.display = 'block'
   let targetId = section.id;
   let menuLink = document.querySelector(`a[href*=${targetId}]`);
   let fakeEvent = {target: menuLink,};
+  console.log('fakeEvent: ', fakeEvent);
   clickHendler(fakeEvent);
   let scrollHeight = Math.max(
     document.body.scrollHeight, document.documentElement.scrollHeight,
