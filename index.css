@@ -1286,10 +1286,10 @@ li:last-child>.menu-link::after {
   }
 
   .pnone-btn {
-    width: 12px;
-    height: 12px;
-    top: 135px;
-    left: 28px;
+      width: 12px;
+      height: 12px;
+      top: 150px;
+      left: 32px;
   }
 
   .phone-horiz>.pnone-btn {
@@ -1307,4 +1307,12 @@ li:last-child>.menu-link::after {
   .btn-filter {
     font-size: 10px;
   }
+}
+@media (max-width: 362px) {
+    .pnone-btn {
+      width: 12px;
+      height: 12px;
+      top: 135px;
+      left: 28px;
+    }
 }
