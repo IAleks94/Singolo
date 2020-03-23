@@ -1197,10 +1197,13 @@ li:last-child>.menu-link::after {
   }
 
   .img-conteiner {
+    display: none;
     width: 48.5%;
     margin-bottom: 10px;
   }
-
+  .img-conteiner:nth-child(-n+8) {
+    display: block;
+  }
   /* about-us */
 
   .about-us {
