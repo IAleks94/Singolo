@@ -1195,19 +1195,19 @@ li:last-child>.menu-link::after {
 }
 
 .gallerey {
-  max-height: 558px;
+  max-height: 540px;
   margin-top: 20px;
 }
 
 .img-conteiner {
-  display: none;
+  /* display: none; */
   width: 48.5%;
   margin-bottom: 10px;
 }
 
-.img-conteiner:nth-child(-n+8) {
+/* .img-conteiner:nth-child(-n+8) {
   display: block;
-}
+} */
 
 /* about-us */
 
