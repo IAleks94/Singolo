@@ -155,21 +155,29 @@ li:last-child>.menu-link::after {
 
 .to-left {
   animation-name: left;
+  /* transform: translateX(100%);
+  transition-duration: 1s; */
 }
 
 .to-right {
-  animation-name: right;
-  animation-direction: reverse;
+  animation-name: right; 
+   animation-direction: reverse;
+  /* transform: translateX(100%);
+  transition-duration: 1s; */
 }
 
 .from-left {
+  /* transform: translateX(-100%);
+  transition-duration: 1s; */
   animation-name: left;
   animation-direction: reverse;
 }
 
 .from-right {
   animation-name: right;
-}
+  /* transform: translateX(-100%);
+  transition-duration: 1s; */
+} 
 
 @keyframes left {
   from {
@@ -283,7 +291,9 @@ li:last-child>.menu-link::after {
 .phone-group {
   margin: 0 auto;
   position: relative;
+  max-height: 480px;
   height: calc(100vw * 0.47);
+  max-width: 480px;
   width: calc(100vw * 0.47);
   margin-bottom: 10px;
   background-image: url(./assets/phone-group.png);
