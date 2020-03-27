@@ -74,11 +74,15 @@ function changeCurrentItem(n) {
 }
 
 function hideItem(direction) {
+  console.log("hideItem вызван");
   isEnabled = false;
   sliderItems[currentItem].classList.add(direction);
   sliderItems[currentItem].addEventListener("animationend", () =>
     hideAnimationendHendler(direction)
   );
+  //   sliderItems[currentItem].addEventListener("transitionend", () =>
+  //   hideAnimationendHendler(direction)
+  // );
 }
 
 function hideAnimationendHendler(direction) {
@@ -88,13 +92,20 @@ function hideAnimationendHendler(direction) {
 function showItem(direction) {
   console.log("showItem вызван");
   sliderItems[currentItem].classList.add("next", direction);
+  console.log('sliderItems[currentItem]: ', sliderItems[currentItem]);
   sliderItems[currentItem].addEventListener("animationend", () =>
     showAnimationendHendler(direction)
   );
+//  sliderItems[currentItem].addEventListener("transitionend", () =>
+//   showAnimationendHendler(direction));
 }
 
 function showAnimationendHendler(direction) {
+  console.log('direction: ', direction);
+  console.log('показываем');
+  console.log('event.target: ', event.target);
   event.target.classList.remove("next", direction);
+ 
   event.target.classList.add("active");
   isEnabled = true;
 }
@@ -127,25 +138,28 @@ function changeBG() {
 // -------------------------Галерея -----------------------------------
 let animationEnd = true;
 function gallereyMikher() {
+  arrGaleryItems = Array.from(
+    galerey.getElementsByClassName("img-conteiner")
+  );
     animationEnd = false;
-    let arrCoordImg = arrGaleryItems.map(item => item.getBoundingClientRect());
+    let arrCoordImg = arrGaleryItems.slice().map(item => item.getBoundingClientRect());
     let newArrCoordImg;
     let durationArr = [];
+    let newGaleryItems;
     let shafl = () => {
-      newArrCoordImg = arrCoordImg.slice().sort(() => Math.random() - 0.5);
+      newGaleryItems = arrGaleryImgs.slice().sort(() => Math.random() - 0.5);
+      console.log('newGaleryItems: ', newGaleryItems);
+      newArrCoordImg = newGaleryItems.map(item => item.getBoundingClientRect());
+      console.log('newArrCoordImg: ', newArrCoordImg);
       arrGaleryItems.forEach((item, index) => {
         let {top, left} = newArrCoordImg[index];
         let oldTop = arrCoordImg[index].top;
         let oldLeft = arrCoordImg[index].left;
         let durationTop = top - oldTop;
         let durationLeft = left - oldLeft;
-        console.log(durationTop);
-        console.log(durationLeft);
         let itemTop = +item.style.top.slice(0, -2);
         let itemLeft = +item.style.left.slice(0, -2);
         if (durationTop || durationLeft) {
-          console.log(Math.round(durationTop + itemTop) + 'px');
-          console.log(Math.round(durationLeft +itemLeft) + 'px');
           durationArr.push({top: Math.round(durationTop + itemTop) + 'px', left: Math.round(durationLeft +itemLeft) + 'px',});
         }
       });
@@ -159,9 +173,57 @@ function gallereyMikher() {
             arrGaleryItems[index].style.top = top;
             arrGaleryItems[index].style.left = left;
             });
+            console.log('newGaleryItems last: ', newGaleryItems);
+
+            // arrGaleryItems = Array.from(galerey.getElementsByClassName("img-conteiner"));
+            let newGalIndex = arrGaleryItems.map((item, index) => {
+              let itemTop = +item.style.top.slice(0, -2);
+              let itemLeft = +item.style.left.slice(0, -2);
+              let i = index;
+              if (itemTop > 0 && itemTop < 204){
+                i +=4;
+              }
+              if (itemTop > 204 && itemTop < 407){
+                i +=8;
+              }
+              if (itemTop < 0 && itemTop > -204){
+                i -=4;
+              }
+              if (itemTop < -203 && itemTop > -407){
+                i -=8;
+              }
+              if (itemLeft > 0 && itemLeft < 238){
+                i +=1;
+              }
+              if (itemLeft > 238 && itemLeft < 475){
+                i +=2;
+              }
+              if (itemLeft > 474 && itemLeft < 712){
+                i +=3;
+              }
+              if (itemLeft < 0 && itemLeft > -238){
+                i -=1;
+              }
+              if (itemLeft < -238 && itemLeft > -475){
+                i -=2;
+              }
+              if (itemLeft < -474 && itemLeft > -712){
+                i -=3;
+              }
+              return i;
+            });
+            let newGal =[];
+            newGalIndex.forEach((i, index) => newGal[i] = arrGaleryItems[index]);
+            console.log(newGal);
 
     setTimeout(() => {
       animationEnd = true;
+      let gallery = document.querySelector('.gallerey');
+      gallery.innerHTML='';
+      newGal.forEach(item => {
+        item.style = 'none';
+      })
+      gallery.append(...newGal);
     }, 1000);
 
 }
@@ -235,7 +297,6 @@ function scrollHandler() {
   let targetId = section.id;
   let menuLink = document.querySelector(`a[href*=${targetId}]`);
   let fakeEvent = {target: menuLink,};
-  console.log('fakeEvent: ', fakeEvent);
   clickHendler(fakeEvent);
   let scrollHeight = Math.max(
     document.body.scrollHeight, document.documentElement.scrollHeight,
