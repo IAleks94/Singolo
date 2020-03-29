@@ -12,7 +12,7 @@ let arrGaleryImgs = Array.from(galerey.getElementsByClassName("gallerey-img"));
 // --------------------Обработчик кликов ------------------------------
 function clickHendler(event) {
   let target = event.target;
-  // console.log('target: ', target);
+   console.log('target: ', target);
   let menuLink = target.classList.contains("menu-link");
   let sliderArroy = target.classList.contains("slider-arrow");
   let phoneBtn = target.classList.contains("pnone-btn");
@@ -20,6 +20,7 @@ function clickHendler(event) {
   let galeryItem = target.classList.contains("gallerey-img");
   let popapBtn = target.classList.contains("popap-btn");
   let menuBurger = target.classList.contains("menu-btn");
+  console.log('menuBurger: ', menuBurger);
   if (animationEnd) {
     if (menuLink || btnFilter || galeryItem || popapBtn) {
       let activClass;
@@ -34,6 +35,7 @@ function clickHendler(event) {
           menu.classList.toggle("active");
           document.querySelector(".menu-btn").classList.toggle("menu-btn-active");
           logo.classList.toggle("active");
+          return;
         }
         // клик по тэгу галереи
       } else if (btnFilter ) {
@@ -54,25 +56,26 @@ function clickHendler(event) {
       arr.forEach(item => item.classList.remove(activClass));
       target.classList.add(activClass);
       // клик по стрелке слайдера
-    } else if (sliderArroy && isEnabled) {
+  } else if (sliderArroy && isEnabled) {
       if (target.classList.contains("right")) {
         nextItem(currentItem);
       } else {
         previouseItem(currentItem);
       }
       // клик по кнопке телефона
-    }
-  } else if (phoneBtn) {
+    } else if (phoneBtn) {
     // да да можно все это записать одной строкой
     let pnone = target.parentElement;
     let wind = pnone.querySelector("img");
     wind.classList.toggle("display-off");
   } else if (menuBurger) {
+    
     let menu = document.querySelector(".menu");
     let logo = document.querySelector(".logo");
     menu.classList.toggle("active");
     target.classList.toggle("menu-btn-active");
     logo.classList.toggle("active");
+  }
   }
 }
 
