@@ -1,5 +1,5 @@
 "use strict";
-document.addEventListener("click", (event) => clickHendler(event));
+document.addEventListener("click", event => clickHendler(event));
 
 let arrMenuLink = Array.from(document.querySelectorAll(".menu-link"));
 let arrFilters = document.querySelectorAll(".btn-filter");
@@ -12,23 +12,34 @@ let arrGaleryImgs = Array.from(galerey.getElementsByClassName("gallerey-img"));
 // --------------------Обработчик кликов ------------------------------
 function clickHendler(event) {
   let target = event.target;
-  console.log('target: ', target);
+  // console.log('target: ', target);
   let menuLink = target.classList.contains("menu-link");
   let sliderArroy = target.classList.contains("slider-arrow");
   let phoneBtn = target.classList.contains("pnone-btn");
   let btnFilter = target.classList.contains("btn-filter");
   let galeryItem = target.classList.contains("gallerey-img");
   let popapBtn = target.classList.contains("popap-btn");
-  let menuBurger = target.classList.contains('menu-btn')
+  let menuBurger = target.classList.contains("menu-btn");
   if (menuLink || btnFilter || galeryItem || popapBtn) {
-    let activClass = "menu-activ";
-    let arr = arrMenuLink;
-    // клик по тэгу галереи 
-    if (btnFilter && animationEnd) {
+    let activClass;
+    let arr;
+    // клик по меню
+    if (menuLink) {
+      activClass = "menu-activ";
+      arr = arrMenuLink;
+      if (document.querySelector(".menu.active")) {
+        let menu = document.querySelector(".menu");
+        let logo = document.querySelector(".logo");
+        menu.classList.toggle("active");
+        document.querySelector(".menu-btn").classList.toggle("menu-btn-active");
+        logo.classList.toggle("active");
+      }
+      // клик по тэгу галереи
+    } else if (btnFilter && animationEnd) {
       activClass = "filter-activ";
       arr = arrFilters;
       gallereyMikher();
-      // клик по картинке галереи 
+      // клик по картинке галереи
     } else if (galeryItem) {
       activClass = "img-activ";
       arr = arrGaleryImgs;
@@ -38,7 +49,7 @@ function clickHendler(event) {
       document.body.style.overflow = "";
       modalOff = true;
       form.reset();
-    } 
+    }
     arr.forEach(item => item.classList.remove(activClass));
     target.classList.add(activClass);
     // клик по стрелке слайдера
@@ -52,14 +63,14 @@ function clickHendler(event) {
   } else if (phoneBtn) {
     // да да можно все это записать одной строкой
     let pnone = target.parentElement;
-    let wind = pnone.querySelector('img');
+    let wind = pnone.querySelector("img");
     wind.classList.toggle("display-off");
   } else if (menuBurger) {
-    let menu = document.querySelector('.menu')
-    let logo = document.querySelector('.logo')
-    target.classList.toggle('menu-btn-active')
-    menu.classList.toggle('active')
-    logo.classList.toggle('active')
+    let menu = document.querySelector(".menu");
+    let logo = document.querySelector(".logo");
+    menu.classList.toggle("active");
+    target.classList.toggle("menu-btn-active");
+    logo.classList.toggle("active");
   }
 }
 
@@ -70,11 +81,9 @@ let isEnabled = true;
 
 function changeCurrentItem(n) {
   currentItem = (n + sliderItems.length) % sliderItems.length;
-  console.log("currentItem: ", currentItem);
 }
 
 function hideItem(direction) {
-  console.log("hideItem вызван");
   isEnabled = false;
   sliderItems[currentItem].classList.add(direction);
   sliderItems[currentItem].addEventListener("animationend", () =>
@@ -90,22 +99,17 @@ function hideAnimationendHendler(direction) {
 }
 
 function showItem(direction) {
-  console.log("showItem вызван");
   sliderItems[currentItem].classList.add("next", direction);
-  console.log('sliderItems[currentItem]: ', sliderItems[currentItem]);
   sliderItems[currentItem].addEventListener("animationend", () =>
     showAnimationendHendler(direction)
   );
-//  sliderItems[currentItem].addEventListener("transitionend", () =>
-//   showAnimationendHendler(direction));
+  //  sliderItems[currentItem].addEventListener("transitionend", () =>
+  //   showAnimationendHendler(direction));
 }
 
 function showAnimationendHendler(direction) {
-  console.log('direction: ', direction);
-  console.log('показываем');
-  console.log('event.target: ', event.target);
   event.target.classList.remove("next", direction);
- 
+
   event.target.classList.add("active");
   isEnabled = true;
 }
@@ -137,105 +141,218 @@ function changeBG() {
 
 // -------------------------Галерея -----------------------------------
 let animationEnd = true;
+
 function gallereyMikher() {
-  arrGaleryItems = Array.from(
-    galerey.getElementsByClassName("img-conteiner")
-  );
-    animationEnd = false;
-    let arrCoordImg = arrGaleryItems.slice().map(item => item.getBoundingClientRect());
-    let newArrCoordImg;
-    let durationArr = [];
-    let newGaleryItems;
-    let shafl = () => {
-      newGaleryItems = arrGaleryImgs.slice().sort(() => Math.random() - 0.5);
-      console.log('newGaleryItems: ', newGaleryItems);
-      newArrCoordImg = newGaleryItems.map(item => item.getBoundingClientRect());
-      console.log('newArrCoordImg: ', newArrCoordImg);
-      arrGaleryItems.forEach((item, index) => {
-        let {top, left} = newArrCoordImg[index];
-        let oldTop = arrCoordImg[index].top;
-        let oldLeft = arrCoordImg[index].left;
-        let durationTop = top - oldTop;
-        let durationLeft = left - oldLeft;
-        let itemTop = +item.style.top.slice(0, -2);
-        let itemLeft = +item.style.left.slice(0, -2);
-        if (durationTop || durationLeft) {
-          durationArr.push({top: Math.round(durationTop + itemTop) + 'px', left: Math.round(durationLeft +itemLeft) + 'px',});
-        }
-      });
-      if (durationArr.length !== arrGaleryItems.length) {
+  arrGaleryItems = Array.from(galerey.getElementsByClassName("img-conteiner"));
+  animationEnd = false;
+  let arrCoordImg = arrGaleryItems
+    .slice()
+    .map(item => item.getBoundingClientRect());
+  let newArrCoordImg;
+  let durationArr = [];
+  let newGaleryItems;
+  let setTop = new Set();
+  let setLeft = new Set();
+  let shafl = () => {
+    newGaleryItems = arrGaleryImgs.slice().sort(() => Math.random() - 0.5);
+    newArrCoordImg = newGaleryItems.map(item => item.getBoundingClientRect());
+    arrGaleryItems.forEach((item, index) => {
+      let { top, left } = newArrCoordImg[index];
+      let oldTop = arrCoordImg[index].top;
+      let oldLeft = arrCoordImg[index].left;
+      let durationTop = Math.round(top - oldTop);
+      let durationLeft = Math.round(left - oldLeft);
+      setTop.add(durationTop);
+      setLeft.add(durationLeft);
+
+      if (durationTop || durationLeft) {
+        durationArr.push({
+          top: durationTop + "px",
+          left: durationLeft + "px"
+        });
+      }
+    });
+    if (document.documentElement.clientWidth >= 1020) {
+      if (
+        durationArr.length !== arrGaleryItems.length ||
+        setTop.size != 5 ||
+        setLeft.size != 7
+      ) {
         durationArr = [];
         shafl();
       }
-    };
-    shafl();
-          durationArr.forEach(({top, left}, index) => {
-            arrGaleryItems[index].style.top = top;
-            arrGaleryItems[index].style.left = left;
-            });
-            console.log('newGaleryItems last: ', newGaleryItems);
+    } else if (
+      document.documentElement.clientWidth < 1020 &&
+      document.documentElement.clientWidth >= 768
+    ) {
+      if (
+        durationArr.length !== arrGaleryItems.length ||
+        setTop.size != 7 ||
+        setLeft.size != 5
+      ) {
+        durationArr = [];
+        shafl();
+      }
+    } else if (document.documentElement.clientWidth < 768) {
+      if (
+        durationArr.length !== arrGaleryItems.length ||
+        setTop.size != 11 ||
+        setLeft.size != 3
+      ) {
+        durationArr = [];
+        shafl();
+      }
+    }
+  };
+  shafl();
+  durationArr.forEach(({ top, left }, index) => {
+    arrGaleryItems[index].style.top = top;
+    arrGaleryItems[index].style.left = left;
+  });
+  let arrSetTop = Array.from(setTop).sort((a, b) => a - b);
+  let arrSetLeft = Array.from(setLeft).sort((a, b) => a - b);
 
-            // arrGaleryItems = Array.from(galerey.getElementsByClassName("img-conteiner"));
-            let newGalIndex = arrGaleryItems.map((item, index) => {
-              let itemTop = +item.style.top.slice(0, -2);
-              let itemLeft = +item.style.left.slice(0, -2);
-              let i = index;
-              if (itemTop > 0 && itemTop < 204){
-                i +=4;
-              }
-              if (itemTop > 204 && itemTop < 407){
-                i +=8;
-              }
-              if (itemTop < 0 && itemTop > -204){
-                i -=4;
-              }
-              if (itemTop < -203 && itemTop > -407){
-                i -=8;
-              }
-              if (itemLeft > 0 && itemLeft < 238){
-                i +=1;
-              }
-              if (itemLeft > 238 && itemLeft < 475){
-                i +=2;
-              }
-              if (itemLeft > 474 && itemLeft < 712){
-                i +=3;
-              }
-              if (itemLeft < 0 && itemLeft > -238){
-                i -=1;
-              }
-              if (itemLeft < -238 && itemLeft > -475){
-                i -=2;
-              }
-              if (itemLeft < -474 && itemLeft > -712){
-                i -=3;
-              }
-              return i;
-            });
-            let newGal =[];
-            newGalIndex.forEach((i, index) => newGal[i] = arrGaleryItems[index]);
-            console.log(newGal);
+  let newGalIndex = arrGaleryItems.map((item, index) => {
+    let itemTop = +item.style.top.slice(0, -2);
+    let itemLeft = +item.style.left.slice(0, -2);
+    let i = index;
+    if (setTop.size === 5) {
+      switch (itemTop) {
+        case arrSetTop[0]:
+          i -= 8;
+          break;
+        case arrSetTop[1]:
+          i -= 4;
+          break;
+        case arrSetTop[3]:
+          i += 4;
+          break;
+        case arrSetTop[4]:
+          i += 8;
+          break;
+      }
+      switch (itemLeft) {
+        case arrSetLeft[0]:
+          i -= 3;
+          break;
+        case arrSetLeft[1]:
+          i -= 2;
+          break;
+        case arrSetLeft[2]:
+          i -= 1;
+          break;
+        case arrSetLeft[4]:
+          i += 1;
+          break;
+        case arrSetLeft[5]:
+          i += 2;
+          break;
+        case arrSetLeft[6]:
+          i += 3;
+          break;
+      }
+    } else if (setTop.size === 7) {
+      switch (itemTop) {
+        case arrSetTop[0]:
+          i -= 9;
+          break;
+        case arrSetTop[1]:
+          i -= 6;
+          break;
+        case arrSetTop[2]:
+          i -= 3;
+          break;
+        case arrSetTop[4]:
+          i += 3;
+          break;
+        case arrSetTop[5]:
+          i += 6;
+          break;
+        case arrSetTop[6]:
+          i += 9;
+          break;
+      }
+      switch (itemLeft) {
+        case arrSetLeft[0]:
+          i -= 2;
+          break;
+        case arrSetLeft[1]:
+          i -= 1;
+          break;
+        case arrSetLeft[3]:
+          i += 1;
+          break;
+        case arrSetLeft[4]:
+          i += 2;
+          break;
+      }
+    } else if (setTop.size === 11) {
+      switch (itemTop) {
+        case arrSetTop[0]:
+          i -= 10;
+          break;
+        case arrSetTop[1]:
+          i -= 8;
+          break;
+        case arrSetTop[2]:
+          i -= 6;
+          break;
+        case arrSetTop[3]:
+          i -= 4;
+          break;
+        case arrSetTop[4]:
+          i -= 2;
+          break;
+        case arrSetTop[6]:
+          i += 2;
+          break;
+        case arrSetTop[7]:
+          i += 4;
+          break;
+        case arrSetTop[8]:
+          i += 6;
+          break;
+        case arrSetTop[9]:
+          i += 8;
+          break;
+        case arrSetTop[10]:
+          i += 10;
+          break;
+      }
+      switch (itemLeft) {
+        case arrSetLeft[0]:
+          i -= 1;
+          break;
+        case arrSetLeft[2]:
+          i += 1;
+          break;
+      }
+    }
+    return i;
+  });
+  let newGal = [];
+  newGalIndex.forEach((i, index) => (newGal[i] = arrGaleryItems[index]));
 
-    setTimeout(() => {
-      animationEnd = true;
-      let gallery = document.querySelector('.gallerey');
-      gallery.innerHTML='';
-      newGal.forEach(item => {
-        item.style = 'none';
-      })
-      gallery.append(...newGal);
-    }, 1000);
-
+  setTimeout(() => {
+    animationEnd = true;
+    let gallery = document.querySelector(".gallerey");
+    gallery.innerHTML = "";
+    newGal.forEach(item => {
+      item.style = "none";
+    });
+    gallery.append(...newGal);
+  }, 1000);
 }
- 
+
 // -------------------------Форма -----------------------------------
 let form = document.querySelector(".quote-form");
 form.addEventListener("submit", () => submitHendler());
 
-let modalOff = true
+let modalOff = true;
+
 function submitHendler() {
   event.preventDefault();
-  if(modalOff) {
+  if (modalOff) {
     let isValid = form.checkValidity();
     if (isValid) {
       document.body.append(popapCreater());
@@ -243,7 +360,6 @@ function submitHendler() {
       modalOff = false;
     }
   }
- 
 }
 
 function popapCreater() {
@@ -262,7 +378,7 @@ function popapCreater() {
   }
   text.innerHTML = `Письмо отправлено </br>${subject}</br>${detail}</br>`;
   if (text.innerHTML.length > 750) {
-    popap.style.overflowY = 'scroll';
+    popap.style.overflowY = "scroll";
   }
   let btnOK = document.createElement("button");
   btnOK.className = "popap-btn";
@@ -284,28 +400,37 @@ function keydownHendler() {
   }
 }
 
-
 // ------------ Обработка скрола-----------------
- document.addEventListener('scroll', () => scrollHandler());
+document.addEventListener("scroll", () => scrollHandler());
 
 function scrollHandler() {
-  let menu = document.querySelector('header');
-  let hight = menu.offsetHeight
-   menu.style.display = 'none'
-  let section = document.elementFromPoint(0, hight + 10).closest('section');
-  menu.style.display = 'block'
+  let menu = document.querySelector("header");
+  let hight = menu.offsetHeight;
+  menu.style.display = "none";
+  let section = document.elementFromPoint(0, hight + 10).closest("section");
+  menu.style.display = "block";
   let targetId = section.id;
   let menuLink = document.querySelector(`a[href*=${targetId}]`);
-  let fakeEvent = {target: menuLink,};
+  let fakeEvent = {
+    target: menuLink
+  };
   clickHendler(fakeEvent);
   let scrollHeight = Math.max(
-    document.body.scrollHeight, document.documentElement.scrollHeight,
-    document.body.offsetHeight, document.documentElement.offsetHeight,
-    document.body.clientHeight, document.documentElement.clientHeight
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.offsetHeight,
+    document.body.clientHeight,
+    document.documentElement.clientHeight
   );
-  if (Math.floor(window.pageYOffset + document.documentElement.clientHeight) === scrollHeight) {
-    let contactLink = document.querySelector('a[href*=contact]');
-    let fakeContact = {target: contactLink,};
-   clickHendler(fakeContact);
+  if (
+    Math.floor(window.pageYOffset + document.documentElement.clientHeight) ===
+    scrollHeight
+  ) {
+    let contactLink = document.querySelector("a[href*=contact]");
+    let fakeContact = {
+      target: contactLink
+    };
+    clickHendler(fakeContact);
   }
 }
