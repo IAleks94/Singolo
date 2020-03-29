@@ -20,46 +20,48 @@ function clickHendler(event) {
   let galeryItem = target.classList.contains("gallerey-img");
   let popapBtn = target.classList.contains("popap-btn");
   let menuBurger = target.classList.contains("menu-btn");
-  if (menuLink || btnFilter || galeryItem || popapBtn) {
-    let activClass;
-    let arr;
-    // клик по меню
-    if (menuLink) {
-      activClass = "menu-activ";
-      arr = arrMenuLink;
-      if (document.querySelector(".menu.active")) {
-        let menu = document.querySelector(".menu");
-        let logo = document.querySelector(".logo");
-        menu.classList.toggle("active");
-        document.querySelector(".menu-btn").classList.toggle("menu-btn-active");
-        logo.classList.toggle("active");
+  if (animationEnd) {
+    if (menuLink || btnFilter || galeryItem || popapBtn) {
+      let activClass;
+      let arr;
+      // клик по меню
+      if (menuLink) {
+        activClass = "menu-activ";
+        arr = arrMenuLink;
+        if (document.querySelector(".menu.active")) {
+          let menu = document.querySelector(".menu");
+          let logo = document.querySelector(".logo");
+          menu.classList.toggle("active");
+          document.querySelector(".menu-btn").classList.toggle("menu-btn-active");
+          logo.classList.toggle("active");
+        }
+        // клик по тэгу галереи
+      } else if (btnFilter ) {
+        activClass = "filter-activ";
+        arr = arrFilters;
+        gallereyMikher();
+        // клик по картинке галереи
+      } else if (galeryItem) {
+        activClass = "img-activ";
+        arr = arrGaleryImgs;
+        // клик по закрывающей попап кнопке
+      } else if (popapBtn) {
+        document.querySelector(".popap").remove();
+        document.body.style.overflow = "";
+        modalOff = true;
+        form.reset();
       }
-      // клик по тэгу галереи
-    } else if (btnFilter && animationEnd) {
-      activClass = "filter-activ";
-      arr = arrFilters;
-      gallereyMikher();
-      // клик по картинке галереи
-    } else if (galeryItem) {
-      activClass = "img-activ";
-      arr = arrGaleryImgs;
-      // клик по закрывающей попап кнопке
-    } else if (popapBtn) {
-      document.querySelector(".popap").remove();
-      document.body.style.overflow = "";
-      modalOff = true;
-      form.reset();
+      arr.forEach(item => item.classList.remove(activClass));
+      target.classList.add(activClass);
+      // клик по стрелке слайдера
+    } else if (sliderArroy && isEnabled) {
+      if (target.classList.contains("right")) {
+        nextItem(currentItem);
+      } else {
+        previouseItem(currentItem);
+      }
+      // клик по кнопке телефона
     }
-    arr.forEach(item => item.classList.remove(activClass));
-    target.classList.add(activClass);
-    // клик по стрелке слайдера
-  } else if (sliderArroy && isEnabled) {
-    if (target.classList.contains("right")) {
-      nextItem(currentItem);
-    } else {
-      previouseItem(currentItem);
-    }
-    // клик по кнопке телефона
   } else if (phoneBtn) {
     // да да можно все это записать одной строкой
     let pnone = target.parentElement;
